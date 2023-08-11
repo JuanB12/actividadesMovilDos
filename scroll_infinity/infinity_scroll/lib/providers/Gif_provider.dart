@@ -6,7 +6,7 @@ import 'package:infinity_scroll/models/Modelo.dart';
 
 class GifProvider {
   final url = Uri.parse(
-      'https://api.giphy.com/v1/gifs/trending?api_key=081Z33Gf8OaNbdK1upYCzUqPGG90MimV&limit=10000&rating=g');
+      'https://api.giphy.com/v1/gifs/trending?api_key=081Z33Gf8OaNbdK1upYCzUqPGG90MimV&limit=500&rating=g');
 
   Future<List<Modelo>> getGifs() async {
     final resp = await http.get(url);
