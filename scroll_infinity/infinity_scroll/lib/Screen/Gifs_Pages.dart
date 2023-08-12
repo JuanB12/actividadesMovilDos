@@ -1,93 +1,63 @@
-// import 'package:flutter/material.dart';
-// import 'package:infinity_scroll/providers/Gif_provider.dart';
-// import 'package:infinity_scroll/models/Modelo.dart';
-// import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:infinity_scroll/models/Modelo.dart';
+import 'package:infinity_scroll/providers/Gif_provider.dart';
 
-// class GifPage extends StatefulWidget {
-//   const GifPage({Key? key}) : super(key: key);
+class GifPages extends StatefulWidget {
+  final String title;
 
-//   @override
-//   State<GifPage> createState() => _GifPageState();
-// }
+  const GifPages({required this.title});
 
-// class _GifPageState extends State<GifPage> {
-//   final gifsprovider = GifProvider();
+  @override
+  _GifPagesState createState() => _GifPagesState();
+}
 
-//   late Future<List<Modelo>> _listadoGifs;
+class _GifPagesState extends State<GifPages> {
+  List<Modelo> gifs = [];
+  int i = 0;
 
-//   @override
-//   void initState() {
-//     super.initState();
-//     _listadoGifs = gifsprovider.getGifs();
-//   }
+  ScrollController _scrollController = ScrollController();
 
-//   /*@override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SafeArea(
-//           child: Container(
-//         child: FutureBuilder(
-//             future: _listadoGifs,
-//             builder: (context, snapshot) {
-//               if (snapshot.hasData) {
-//                 return GridView.count(
-//                   crossAxisCount: 2,
-//                   children: ListGifs(snapshot.data as List<ModeloGif>),
-//                 );
-//               } else {
-//                 return Center(
-//                   child: const CircularProgressIndicator(),
-//                 );
-//               }
-//             }),
-//       )),
-//     );
-//   }*/
+  @override
+  void initState() {
+    super.initState();
+    _loadGifs();
+    _scrollController.addListener(_scrollListener);
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SafeArea(
-//           child: Container(
-//         child: Padding(
-//           padding: const EdgeInsets.all(8.0),
-//           child: FutureBuilder(
-//               future: _listadoGifs,
-//               builder: (context, snapshot) {
-//                 if (snapshot.hasData) {
-//                   return GridView.count(
-//                     crossAxisCount: 1,
-//                     children: ListGifs(snapshot.data! as List<Modelo>),
-//                   );
-//                 } else {
-//                   print("ct");
-//                   return Center(
-//                     child: const CircularProgressIndicator(),
-//                   );
-//                 }
-//               }),
-//         ),
-//       )),
-//     );
-//   }
-// }
+  Future<void> _loadGifs() async {
+    final listGifs = await GifProvider().getGifs(offset: i);
+    setState(() {
+      gifs.addAll(listGifs);
+      i += listGifs.length;
+    });
+  }
 
-// List<Widget> ListGifs(List<Modelo> data) {
-//   List<Widget> gifs = [];
-//   for (var gif in data) {
-//     final String url = gif.images?.downsized?.url as String;
-//     gifs.add(Card(
-//       child: Column(
-//         children: <Widget>[
-//           Expanded(
-//               child: Image.network(
-//             url,
-//             fit: BoxFit.fill,
-//           ))
-//         ],
-//       ),
-//     ));
-//   }
+  void _scrollListener() {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
+      _loadGifs();
+    }
+  }
 
-//   return gifs;
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text(widget.title)),
+      ),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
+        ),
+        controller: _scrollController,
+        itemCount: gifs.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Image.network(gifs[index].images!.fixedHeight!.url!);
+        },
+      ),
+    );
+  }
+}

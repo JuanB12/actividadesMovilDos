@@ -1,16 +1,9 @@
 # infinity_scroll
 
-A new Flutter project.
+Este proyecto es una demostración de cómo implementar el infinite scroll de Gifs utilizando una API en Flutter. Se utiliza el paquete Screen/Gifs_Pages.dart para implementar la funcionalidad de infinite scroll.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+El proyecto utiliza la dependencia http para realizar una solicitud HTTP GET al punto final de la API y obtener una lista de Gifs. El paquete providers/Gif_provider.dart se utiliza para implementar el consumo del API. 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+El paquete Screen/Gifs_Pages.dart se utiliza para implementar la funcionalidad de infinite scroll, cuya clase GifPages es la responsable de obtener los Gifs desde el punto final de la API. En el archivo main.dart el cual se encarga de correr el programa.
