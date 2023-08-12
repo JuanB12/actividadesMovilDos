@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:infinity_scroll/Screen/Gifs_Pages.dart';
 
+import '../Screen/HomePages.dart';
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Actividad Infinite Scroll',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.purple,
       ),
+      home: GifPages(title: 'Infinite Scroll - Juan Barrios'),
       debugShowCheckedModeBanner: false,
-      home: const GifPage(),
     );
   }
 }
