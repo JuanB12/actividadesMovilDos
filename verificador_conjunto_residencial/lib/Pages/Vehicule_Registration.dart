@@ -13,7 +13,7 @@ class RegistroVehiculos extends StatelessWidget {
 
   RegistroVehiculos({super.key, required this.title});
 
-    // Lógica para guardar el registro de vehículo
+  // Lógica para guardar el registro de vehículo
   void _guardarRegistro() {
     final marca = _marcaController;
     final modelo = _modeloController;
@@ -35,40 +35,58 @@ class RegistroVehiculos extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
-            TextField(
-              controller: _marcaController,
-              decoration: InputDecoration(
-                labelText: 'Marca',
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _marcaController,
+                decoration: InputDecoration(
+                  labelText: 'Marca',
+                ),
               ),
             ),
-            TextField(
-              controller: _modeloController,
-              decoration: InputDecoration(
-                labelText: 'Modelo',
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _modeloController,
+                decoration: InputDecoration(
+                  labelText: 'Modelo',
+                ),
               ),
             ),
-            TextField(
-              controller: _placaController,
-              decoration: InputDecoration(
-                labelText: 'Placa',
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _placaController,
+                decoration: InputDecoration(
+                  labelText: 'Placa',
+                ),
               ),
             ),
-            TextField(
-              controller: _tipoController,
-              decoration: InputDecoration(
-                labelText: 'Tipo',
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _tipoController,
+                decoration: InputDecoration(
+                  labelText: 'Tipo',
+                ),
               ),
             ),
-            TextField(
-              controller: _nombreController,
-              decoration: InputDecoration(
-                labelText: 'Nombre',
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _nombreController,
+                decoration: InputDecoration(
+                  labelText: 'Nombre',
+                ),
               ),
             ),
-            TextField(
-              controller: _cedulaController,
-              decoration: InputDecoration(
-                labelText: 'Cédula',
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _cedulaController,
+                decoration: InputDecoration(
+                  labelText: 'Cédula',
+                ),
               ),
             ),
             Padding(

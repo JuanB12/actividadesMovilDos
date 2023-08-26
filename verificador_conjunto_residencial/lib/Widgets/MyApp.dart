@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
-      home:  RegistroVehiculos(title: 'Flutter Demo Home Page'),
+      home: RegistroVehiculos(title: 'Flutter Demo Home Page'),
       debugShowCheckedModeBanner: false,
     );
   }
