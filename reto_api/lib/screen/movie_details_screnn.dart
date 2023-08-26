@@ -25,9 +25,19 @@ class MovieDetailsScreen extends StatelessWidget {
       future: fetchMovieDetails(movieId),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Detalles de la Película'),
+            ),
+            body: Center(child: CircularProgressIndicator()),
+          );
         } else if (snapshot.hasError) {
-          return Center(child: Text('Error: ${snapshot.error}'));
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Detalles de la Película'),
+            ),
+            body: Center(child: Text('Error: ${snapshot.error}')),
+          );
         } else {
           final movieDetails = snapshot.data;
 
@@ -42,44 +52,74 @@ class MovieDetailsScreen extends StatelessWidget {
 
           return Scaffold(
             appBar: AppBar(
-              title: Center(child: Text(title)),
+              title: Center(
+                child: Text(title, style: TextStyle(color: Colors.white)),
+              ),
+              backgroundColor: Color.fromARGB(
+                  255, 36, 20, 159), // Color de la barra de navegación
             ),
             body: SingleChildScrollView(
+              padding: EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.network('https://image.tmdb.org/t/p/w500/$posterPath'),
+                  Image.network(
+                    'https://image.tmdb.org/t/p/w500/$posterPath',
+                    fit: BoxFit.cover,
+                    height: 300,
+                  ),
                   SizedBox(height: 16),
                   Text(
                     'Sinopsis:',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black), // Color de títulos
                   ),
+                  SizedBox(height: 8),
                   Text(
                     overview,
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(
+                        fontSize: 16, color: Colors.black), // Color de textos
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 16),
                   Text(
                     'Géneros:',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black), // Color de títulos
                   ),
+                  SizedBox(height: 8),
                   Wrap(
                     spacing: 8,
                     children: genres
-                        .map((genre) => Chip(label: Text(genre['name'])))
+                        .map((genre) => Chip(
+                              label: Text(genre['name'],
+                                  style: TextStyle(
+                                      color: Colors
+                                          .white)), // Color de texto en los chips
+                              backgroundColor: Color.fromARGB(255, 36, 20,
+                                  159), // Color de fondo de los chips
+                            ))
                         .toList(),
                   ),
                   SizedBox(height: 16),
                   Text(
                     'Año de lanzamiento:',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black), // Color de títulos
                   ),
+                  SizedBox(height: 8),
                   Text(
                     releaseDate,
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF616161)), // Color de textos
                   ),
-                  // Puedes agregar más detalles aquí si quieres
                 ],
               ),
             ),

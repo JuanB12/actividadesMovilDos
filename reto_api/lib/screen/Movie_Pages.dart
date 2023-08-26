@@ -19,7 +19,7 @@ class _MoviesScreenState extends State<MoviesScreen> {
 
   Future<void> fetchMovies() async {
     final response = await http.get(Uri.parse(
-        'https://api.themoviedb.org/3/movie/now_playing?api_key=a4b7f1f59915fa14238532d725232d0b&language=en-US'));
+        'https://api.themoviedb.org/3/movie/now_playing?api_key=a4b7f1f59915fa14238532d725232d0b&language=es-ES'));
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
@@ -33,11 +33,21 @@ class _MoviesScreenState extends State<MoviesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Películas Ahora')),
+        title: Center(
+          child: Text(
+            'Películas Ahora',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+              color: Colors.white, // Color de Texto Principal
+            ),
+          ),
+        ),
+        backgroundColor: Color.fromARGB(255, 36, 20, 159),
       ),
+      backgroundColor: Colors.grey[300],
       body: Padding(
-        padding: const EdgeInsets.all(
-            5.0), // Ajusta el padding según tus necesidades
+        padding: const EdgeInsets.all(10.0), // Ajuste de padding
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -54,23 +64,33 @@ class _MoviesScreenState extends State<MoviesScreen> {
                   ),
                 );
               },
-              child: Column(
-                children: [
+              child: Card(
+                elevation: 5,
+                child: Column(children: [
                   Flexible(
-                    child: Image.network(
-                      'https://image.tmdb.org/t/p/w500/${movies[index]['poster_path']}',
-                      fit: BoxFit.cover, // Ajusta el modo de ajuste de la imagen
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
+                      child: Image.network(
+                        'https://image.tmdb.org/t/p/w500/${movies[index]['poster_path']}',
+                        fit: BoxFit
+                            .cover, // Ajusta el modo de ajuste de la imagen
+                      ),
                     ),
                   ),
-                  SizedBox(
-                      height:
-                          8), // Ajusta el espacio entre la imagen y el texto
-                  Text(
-                    movies[index]['title'],
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16),
+                  SizedBox(height: 8),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: Text(
+                      movies[index]['title'],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
-                ],
+                ]),
               ),
             );
           },
@@ -89,12 +109,21 @@ class _MovieDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Detalles de la Película'),
+        title: Text(
+          'Detalles de la Película',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
       ),
       body: Center(
-        child: Text('Detalles de la película con el ID: $movieId'),
+        child: Text(
+          'Detalles de la película con el ID: $movieId',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
       ),
     );
   }
 }
-

@@ -1,16 +1,34 @@
 # reto_api
 
-A new Flutter project.
+Un nuevo proyecto Flutter.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+El proyecto reto_api es una aplicación móvil desarrollada en flutter, que muestra una lista de películas que se encuentran en cartelera. Permite a los usuarios ver los detalles de cada película, como su sinopsis, géneros y año de lanzamiento.
 
-A few resources to get you started if this is your first Flutter project:
+## Características
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* Lista de películas en cartelera obtenidas a través de la API de The Movie Database (TMDb).
+* Detalles completos de cada película, incluyendo su sinopsis, géneros y año de lanzamiento.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Alt text](<iPhone 12 Pro-1692998227838.jpeg>) 
+
+![Alt text](<iPhone 12 Pro-1692998529096.jpeg>)
+
+## Uso
+
+1. Clona este repositorio en tu máquina local.
+2. Instalar flutter y todas sus dependencias. 
+3. Instalar HTTP con dart -- dart pub add http
+
+
+## Créditos
+
+La API de The Movie DataBase (TMDb), podrás encontrar toda su información en https://www.themoviedb.org/documentation/api 
+
+## Desarrollo
+
+El proyecto fue desarrollado por los estudiantes:
+- Juan Camilo Barrios Badel
+- Jeider Alexander Foronda Pacheco
+
