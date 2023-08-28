@@ -1,16 +1,19 @@
 # verificador_conjunto_residencial
 
-A new Flutter project.
+Un nuevo proyecto Flutter.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+El proyecto verificador_conjunto_residencial es una aplicación móvil desarrollada en flutter, que muestra la parte visual solamente para verificar el acceso y registro de vehiculos a un conjunto residencial. 
 
-A few resources to get you started if this is your first Flutter project:
+## Uso
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Clona este repositorio en tu máquina local.
+2. Instalar flutter y todas sus dependencias.
+3. Instalar HTTP con dart -- dart pub add http
+4. Instalar Image Picker -- flutter pub add image_picker
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Desarrollo 
+El proyecto fue desarrollado por:
+
+* Juan Camilo Barrios Badel
