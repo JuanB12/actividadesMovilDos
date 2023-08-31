@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../Models/model.dart';
+import '../Models/welcome.dart';
 
 class SalonListScreen extends StatefulWidget {
   @override
@@ -31,17 +31,54 @@ class _SalonListScreenState extends State<SalonListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Peluquerías y Salones')),
+        title: Text(
+          'Peluquerías y Salones',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.black,
       ),
       body: welcomeList == null
           ? Center(child: CircularProgressIndicator())
           : ListView.builder(
               itemCount: welcomeList.length,
-              itemBuilder: (ctx, index) => ListTile(
-                title: Text(welcomeList[index].razonSocial),
-                subtitle: Text(welcomeList[index].direccionComercial),
-                // Email: Text(welcomeList[index].emailComercial),
-                // ... Otros detalles que quieras mostrar en la lista
+              itemBuilder: (ctx, index) => Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Card(
+                  elevation: 4,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  color: const Color.fromARGB(255, 127, 200, 250),
+                  child: ListTile(
+                    contentPadding: EdgeInsets.all(16),
+                    title: Text(
+                      welcomeList[index].razonSocial,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(height: 8),
+                        Text(
+                          "Nit: ${welcomeList[index].nitPropietario}",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Text(
+                          "Barrio: ${welcomeList[index].barrioComercial}",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Text(
+                          "Email_Propietario: ${welcomeList[index].emailPropietario}",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
     );

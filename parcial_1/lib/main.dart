@@ -7,9 +7,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Salon de belleza',
+      title: 'Parcial 1',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        primarySwatch: Colors.yellow,
       ),
       home: SalonListScreen(),
       debugShowCheckedModeBanner: false,
