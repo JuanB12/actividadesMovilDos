@@ -8,9 +8,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Parcial 1',
-      theme: ThemeData(
-        primarySwatch: Colors.yellow,
-      ),
       home: SalonListScreen(),
       debugShowCheckedModeBanner: false,
     );

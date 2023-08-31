@@ -1,16 +1,20 @@
 # parcial_1
 
-A new Flutter project.
+Un nuevo proyecto Flutter.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Proyecto donde tenemos que consumir la siguiente API
 
-A few resources to get you started if this is your first Flutter project:
+https://www.datos.gov.co/resource/e27n-di57.json 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Se realizo el consumo de esta como se menciono anteriormente, se hizo un scroll infinite, donde muestra uno de los tantos datos del API
+y se intalaron las dependencias de HTTP y provider
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Alt text](<iPhone 12 Pro-1693446674694.jpeg>)
+
+
+## Desarrollo 
+El parcial fue desarrollado por:
+
+* Juan Camilo Barrios Badel
