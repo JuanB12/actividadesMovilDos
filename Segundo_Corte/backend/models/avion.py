@@ -6,8 +6,11 @@ class Avion(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     idaerolinea = db.Column(db.Integer, db.ForeignKey("tblaerolinea.id"))
-    modelo_avion = db.Column(db.String(255))
+    modelo_avion = db.Column(db.String(55))
 
+    def __init__(self, idaerolinea, modelo_avion):
+        self.idaerolinea = idaerolinea
+        self.modelo_avion = modelo_avion
 
 with app.app_context():
     db.create_all()

@@ -20,6 +20,7 @@ def save():
     nombre_cliente = request.json["nombre"]
     correo_cliente = request.json["correo"]
     telefono_cliente = request.json["telefono"]
+    print("PRUEBA DE DEBUG")
     new_cliente = Cliente(
         nombre_cliente,
         correo_cliente,
@@ -33,22 +34,22 @@ def save():
 @ruta_clientes.route("/updatecliente", methods=["PUT"])
 def Update():
     id = request.json["id"]
-    nombre_cliente = request.json["nombre"]
-    correo_cliente = request.json["correo"]
-    telefono_cliente = request.json["telefono"]
+    nombre= request.json["nombre_cliente"]
+    correo = request.json["correo_cliente"]
+    telefono = request.json["telefono_cliente"]
     cliente = Cliente.query.get(id)
     if cliente:
         print(cliente)
-        cliente.nombre = nombre_cliente
-        cliente.correo = correo_cliente
-        cliente.telefono = telefono_cliente
+        cliente.nombre_cliente = nombre
+        cliente.correo_cliente = correo
+        cliente.telefono_cliente = telefono
         db.session.commit()
         return "Datos actualizado con exitos"
     else:
+        print("PRUEBA DE DEBUG")    
         return "Error"
 
-
-@ruta_clientes.route("/deletecliente/<id>", methods=["GET"])
+@ruta_clientes.route("/deletecliente/<id>", methods=["DELETE"])
 def eliminar(id):
     cliente = Cliente.query.get(id)
     db.session.delete(cliente)

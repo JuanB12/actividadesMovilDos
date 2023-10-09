@@ -8,6 +8,10 @@ class Vuelo(db.Model):
     idavion = db.Column(db.Integer, db.ForeignKey("tblavion.id"))
     idaeropuerto = db.Column(db.Integer, db.ForeignKey("tblaeropuerto.id"))
 
+    def __init__ (self, idreserva, idavion, ideropuerto):
+        self.idreserva = idreserva
+        self.idavion = idavion
+        self.idaeropuerto = ideropuerto
 
 with app.app_context():
     db.create_all()

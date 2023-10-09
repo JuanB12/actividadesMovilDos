@@ -30,7 +30,7 @@ def save():
     return "datos guardado con exito"
 
 
-@ruta_reservas.route("/deleteReserva/<id>", methods=["GET"])
+@ruta_reservas.route("/deleteReserva/<id>", methods=["DELETE"])
 def delete(id):
     reserva = Reserva.query.get(id)
     db.session.delete(reserva)
@@ -40,8 +40,9 @@ def delete(id):
     )
 
 
-@ruta_reservas.route("/updateReserva/<id>", methods=["PUT"])
+@ruta_reservas.route("/updateReserva", methods=["PUT"])
 def update():
+    id = request.json["id"]
     idcliente = request.json["idcliente"]
     fecha_reserva = request.json["fecha_reserva"]
     asiento = request.json["asiento"]

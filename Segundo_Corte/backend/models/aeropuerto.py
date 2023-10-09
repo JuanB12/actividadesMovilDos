@@ -9,6 +9,10 @@ class Aeropuerto(db.Model):
     ciudad = db.Column(db.String(70))
     pais = db.Column(db.String(70))
 
+    def __init__(self, nombre_aeropuerto, ciudad, pais):
+        self.nombre_aeropuerto = nombre_aeropuerto
+        self.ciudad = ciudad
+        self.pais = pais
 
 with app.app_context():
     db.create_all()

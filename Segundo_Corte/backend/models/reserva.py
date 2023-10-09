@@ -9,6 +9,10 @@ class Reserva(db.Model):
     fecha_reserva = db.Column(db.String(50))
     asiento = db.Column(db.Integer)
 
+    def __init__(self, idcliente, fecha_reserva, asiento): 
+        self.idcliente = idcliente
+        self.fecha_reserva = fecha_reserva
+        self.asiento = asiento
 
 with app.app_context():
     db.create_all()

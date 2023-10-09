@@ -1,11 +1,16 @@
 from flask import Flask, jsonify, json
 from config.db import db, ma, app
-from api.aeropuerto import Aeropuerto, ruta_Aeropuerto
-from api.reserva import Reserva, ruta_reservas
-from api.avion import Avion, ruta_Avion
-from api.vuelo import Vuelo, ruta_Vuelo
-from api.aerolinea import Aerolinea, ruta_Aerolinea
+
+# ----------------------------------------------------------------
+
 from api.cliente import Cliente, ruta_clientes
+from api.reserva import Reserva, ruta_reservas
+from api.aerolinea import Aerolinea, ruta_Aerolinea
+from api.avion import Avion, ruta_Avion
+from api.aeropuerto import Aeropuerto, ruta_Aeropuerto
+from api.vuelo import Vuelo, ruta_Vuelo
+
+# ----------------------------------------------------------------
 
 app.register_blueprint(ruta_Aeropuerto, url_prefix="/api")
 
@@ -36,6 +41,18 @@ def dostabla():
         i += 1
         datos[i] = {"cliente": clientes.nombre, "reserva": reservas.id}
     return datos
+
+# @app.route("/dostablas", methods=["GET"])
+# def dos_tabla():
+#     datos = {}
+#     resultado = (
+#         db.session.query(Aerolinea, Avion).select_from(Aerolinea).join(Avion).all()
+#     )
+#     i = 0
+#     for aerolinea, avion in resultado:
+#         i += 1
+#         datos[i] = {"cliente": aerolinea.nombre, "reserva": avion.id}
+#     return datos
 
 
 if __name__ == "__main__":

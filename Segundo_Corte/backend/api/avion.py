@@ -17,10 +17,11 @@ def avion():
 
 @ruta_Avion.route("/saveavion", methods=["POST"])
 def save():
-    idaerolinea = request.json["idaerolinea"]
+    id_avion = request.json["id"]
+    id_aerolinea = request.json["idaerolinea"]
     modelo = request.json["modelo_avion"]
     new_avion = Avion(
-        idaerolinea,
+        id_aerolinea,
         modelo,
     )
     db.session.add(new_avion)
@@ -44,7 +45,7 @@ def Update():
         return "Error"
 
 
-@ruta_Avion.route("/deleteavion/<id>", methods=["GET"])
+@ruta_Avion.route("/deleteavion/<id>", methods=["DELETE"])
 def eliminar(id):
     avion = Avion.query.get(id)
     db.session.delete(avion)
