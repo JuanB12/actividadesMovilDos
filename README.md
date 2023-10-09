@@ -7,6 +7,7 @@ Actividades trabajadas durante el semestre en la asignatura Programación Móvil
 3. Mockup de la actividad Reto Api  - 15/Agosto/2023-2.
 4. Reto API The Movie Database (TMDb) - 16/Agosto/2023-2.
 5. Parcial #1 - 30/Agosto/2023-2
+6. Actividad con Flask, pythonanywhere desarrollada en Python - 10/10/2023-2.
 
 # Desarrollo 
 Las actividades en parejas fueron realizadas por los estudiantes:
