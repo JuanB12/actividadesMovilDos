@@ -24,6 +24,20 @@ La siguiente foto es el diagrama E/R del proyecto, con sus respectivas clases y 
 
 ![E/R](diagrama/diagrama_entidad_relacion.png)
 
+![Postmant](image.png)
+
+![Metodos clase Pago](image-1.png)
+
+![Metodos clase Pasajero](image-2.png)
+
+![Metodos clase Reporte](image-3.png)
+
+![Metodos clase Solicitud](image-4.png)
+
+![Metodos clase Vehiculo](image-5.png)
+
+![Metodos clase Viaje](image-6.png)
+
 ## Desarrollo 
 El parcial fue desarrollado por:
 

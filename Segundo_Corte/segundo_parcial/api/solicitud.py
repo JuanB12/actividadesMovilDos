@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, json
 from config.db import db, app, ma
 from models.solicitud import Solicitud, SolicitudSchema
+from models.viaje import Viaje, ViajeSchema
 
 ruta_solicitud = Blueprint("ruta_solicitud", __name__)
 
@@ -15,16 +16,16 @@ def pago():
     return jsonify(resultado_solicitud)
 
 
-@ruta_solicitud.route("/savepago", methods=["POST"])
+@ruta_solicitud.route("/savesolicitud", methods=["POST"])
 def save():
-    idpasajero = request.json["idpasajero"]
+    idpasajero = request.json["idviaje"]
     origen = request.json["origen"]
     destino = request.json["destino"]
     estado = request.json["estado"]
     hora_solicitud = request.json["hora_solicitud"]
     new_solicitud = Solicitud(
         idpasajero,
-         origen,
+        origen,
         destino,
         estado,
         hora_solicitud,
@@ -36,10 +37,10 @@ def save():
     return "Datos guardado con exito"
 
 
-@ruta_solicitud.route("/updatepago", methods=["PUT"])
+@ruta_solicitud.route("/updatesolicitud", methods=["PUT"])
 def Update():
     id = request.json["id"]
-    idpasajero = request.json["idpasajero"]
+    idpasajero = request.json["idviaje"]
     origen = request.json["origen"]
     destino = request.json["destino"]
     estado = request.json["estado"]
@@ -47,9 +48,9 @@ def Update():
     solicitud = Solicitud.query.get(id)
     if solicitud:
         print(solicitud)
-        solicitud.idpasajero = idpasajero
+        solicitud.idviaje = idpasajero
         solicitud.origen = origen
-        solicitud. destino =  destino
+        solicitud.destino = destino
         solicitud.estado = estado
         solicitud.hora_solicitud = hora_solicitud
 
@@ -59,7 +60,7 @@ def Update():
         return "Error :/ "
 
 
-@ruta_solicitud.route("/deletepago/<id>", methods=["DELETE"])
+@ruta_solicitud.route("/deletesolicitud/<id>", methods=["DELETE"])
 def eliminar(id):
     solicitud = Solicitud.query.get(id)
     db.session.delete(solicitud)
@@ -67,3 +68,19 @@ def eliminar(id):
     return jsonify(
         solicitudes_schema.dump(solicitud),
     )
+
+
+@ruta_solicitud.route("/RelacionViaje", methods=["POST"])
+def dostabla():
+    datos = {}
+    resultado = (
+        db.session.query(Viaje, Solicitud).select_from(Viaje).join(Solicitud).all()
+    )
+    i = 0
+    for viaje, pago in resultado:
+        i += 1
+        datos[i] = {
+            "viaje": viaje.id,
+            # "pago": pago.id,
+        }
+    return datos

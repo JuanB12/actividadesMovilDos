@@ -10,23 +10,23 @@ reportes_schema = ReporteSchema(many=True)
 
 @ruta_reporte.route("/reporte", methods=["GET"])
 def reporte():
-    resultall = Reporte.query.all() 
+    resultall = Reporte.query.all()
     resultado_reporte = reportes_schema.dump(resultall)
     return jsonify(resultado_reporte)
 
+
 @ruta_reporte.route("/savereporte", methods=["POST"])
 def save():
-    tipo_reporte = request.json["tipo_reporte"]
-    fecha_generacion = request.json["fecha_generacion"]
-    estado = request.json["correo_electronico"]
-    contenido = request.json["contenido"]
+    tipoReporte = request.json["tipo_reporte"]
+    fechaGeneracion = request.json["fecha_generacion"]
+    estado = request.json["estado"]
+    contenido = request.json["contenido_reporte"]
 
     new_reporte = Reporte(
-        tipo_reporte=tipo_reporte,
-        fecha_generacion=fecha_generacion,
-        estado=estado,
-        contenido_reporte=contenido
-        
+        tipoReporte,
+        fechaGeneracion,
+        estado,
+        contenido,
     )
     db.session.add(
         new_reporte,
@@ -35,25 +35,43 @@ def save():
     return "Datos guardados con exito"
 
 
+# @ruta_reporte.route("/updatereporte", methods=["PUT"])
+# def Update():
+#     id = request.json[id]
+#     tipo_reporte = request.json["tipo_reporte"]
+#     fecha_generacion = request.json["fecha_generacion"]
+#     estado = request.json["estado"]
+#     contenido = request.json["contenido_reporte"]
+#     reporte = Reporte.query.get(id)
+#     if reporte:
+#         print(reporte)
+#         reporte.tipo_reporte = tipo_reporte
+#         reporte.fecha_generacion = fecha_generacion
+#         reporte.estado = estado
+#         reporte.contenido_reporte = contenido
+#         db.session.commit()
+#         return "Datos actualizados con exitos"
+#     else:
+#         return "Error :/ "
+
 @ruta_reporte.route("/updatereporte", methods=["PUT"])
 def Update():
-    id = request.json[id]
-    tipo_reporte = request.json["tipo_reporte"]
-    fecha_generacion = request.json["fecha_generacion"]
-    estado = request.json["correo_electronico"]
-    contenido = request.json["contenido"]
-    reporte = Reporte.query.get(id)
+    idReporte = request.json["id"]
+    nombre = request.json["tipo_reporte"]
+    apellido = request.json["fecha_generacion"]
+    email = request.json["estado"]
+    tel = request.json["contenido_reporte"]
+    reporte = Reporte.query.get(idReporte)
     if reporte:
         print(reporte)
-        reporte. tipo_reporte =  tipo_reporte
-        reporte.fecha_generacion = fecha_generacion
-        reporte. estado=  estado
-        reporte. contenido =  contenido
+        reporte.tipo_reporte = nombre
+        reporte.fecha_generacion = apellido
+        reporte.estado = email
+        reporte.contenido_reporte = tel
         db.session.commit()
         return "Datos actualizados con exitos"
     else:
         return "Error :/ "
-
 
 @ruta_reporte.route("/deletereporte/<id>", methods=["DELETE"])
 def eliminar(id):
@@ -61,5 +79,5 @@ def eliminar(id):
     db.session.delete(reporte)
     db.session.commit()
     return jsonify(
-        reportes_schema.dump(reporte),
+        reporte_schema.dump(reporte),
     )

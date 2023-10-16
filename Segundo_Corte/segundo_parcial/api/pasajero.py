@@ -17,8 +17,8 @@ def pasajero():
 
 @ruta_pasajero.route("/savepasajero", methods=["POST"])
 def save():
-    nombre = request.json["nombre_pasajero"]
-    apellido = request.json["apellido_pasajero"]
+    nombre = request.json["nombre"]
+    apellido = request.json["apellido"]
     email = request.json["correo_electronico"]
     tel = request.json["telefono"]
     dir = request.json["direccion"]
@@ -38,17 +38,17 @@ def save():
 
 @ruta_pasajero.route("/updatepasajero", methods=["PUT"])
 def Update():
-    idPasajero = request.json["id_pasajero"]
-    nombre = request.json["nombrePasajero"]
-    apellido = request.json["apellidoPajero"]
+    idPasajero = request.json["id"]
+    nombre = request.json["nombre"]
+    apellido = request.json["apellido"]
     email = request.json["correo_electronico"]
     tel = request.json["telefono"]
     dir = request.json["direccion"]
     pasajero = Pasajero.query.get(idPasajero)
     if pasajero:
         print(pasajero)
-        pasajero.nombrePasajero = nombre
-        pasajero.apellidoPajero = apellido
+        pasajero.nombre = nombre
+        pasajero.apellido = apellido
         pasajero.correo_electronico = email
         pasajero.telefono = tel
         pasajero.direccion = dir

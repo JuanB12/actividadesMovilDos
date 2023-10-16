@@ -61,7 +61,7 @@ def eliminar(id):
     db.session.delete(pago)
     db.session.commit()
     return jsonify(
-        pagos_schema.dump(pago),
+        pago_schema.dump(pago),
     )
 
 

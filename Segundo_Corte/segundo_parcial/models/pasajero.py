@@ -19,7 +19,6 @@ class Pasajero(db.Model):
         telefono,
         direccion,
     ):
-        
         self.nombre = nombre
         self.apellido = apellido
         self.correo_electronico = correo_electronico
@@ -35,8 +34,8 @@ class PasajeroSchema(ma.Schema):
     class Meta:
         fields = (
             "id",
-            "nombre_pasajero",
-            "apellido_pasajero",
+            "nombre",
+            "apellido",
             "correo_electronico",
             "telefono",
             "direccion",
